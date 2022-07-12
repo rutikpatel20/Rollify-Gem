@@ -1,0 +1,19 @@
+<!-- Employee Details Showing -->
+<div class="center flex-column">
+  <h1>POST</h1>
+  <!--Error Message-->
+  <% if flash[:errors] %>
+    <% flash.each do |name,message| %>
+      <p class="text-danger"><%= message%></p>
+    <% end %>
+  <% end %>
+  <div>
+    <h2> &#10145; Title: <%= @post.title %> </h2>
+    <h2> &#10145; Content: <%= @post.content %> </h2>
+  </div>
+  <div class="d-flex">
+    <%= button_to "Edit Post" , edit_post_path, method: :get ,class:"btn-success border-0 rounded-pill shadow p-2 m-2" %>
+    <%= button_to "Delete Post", post_path, method: :delete ,class:"btn-danger border-0 rounded-pill shadow p-2 m-2" %>
+    <%= button_to "View all Posts", posts_path,method: :get ,class:"btn-primary border-0 rounded-pill shadow p-2 m-2" %>
+  </div>
+</div>
