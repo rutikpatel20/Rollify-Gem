@@ -16,6 +16,10 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <% if signed_in? %>
+      Are You Admin? <%= current_user.has_role? :admin %>
+      <br>
+      Your Role : <%= current_user.roles.pluck(:name) %>
+      <br>
       <%= link_to current_user.email, edit_user_registration_path %>
       <%= button_to "Log out", destroy_user_session_path, method: :delete, data: { turbo: "false" } %>
     <% else %>
