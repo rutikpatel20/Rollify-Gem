@@ -15,6 +15,9 @@
             <td class="text-center"> ID </td>
             <td class="text-center"> Title </td>
             <td class="text-center"> Content </td>
+            <td class="text-center"> Users </td>
+            <td class="text-center"> Creators </td>
+            <td class="text-center"> Editors </td>
             <td colspan=3 class="text-center"> Action </td>
           </thead>
           <% @posts.each do |post| %>
@@ -22,6 +25,9 @@
               <td class="text-center"> <%= post.id %> </td>
               <td class="text-center"> <%= link_to post.title, post_path(post) %> </td>
               <td class="text-center"> <%= post.content %> </td>
+              <td class="text-center"> <%= post.users.pluck(:email) %> </td>
+              <td class="text-center"> <%= post.creators.pluck(:email) %> </td>
+              <td class="text-center"> <%= post.editors.pluck(:email) %> </td>
               <td class="text-center"><%= button_to "Show",post_path(post),method: :get, class:"btn-success border-0 rounded-pill shadow px-3 py-2" %></td>
               <td class="text-center"><%= button_to "Edit",edit_post_path(post),method: :get, class:"btn-primary border-0 rounded-pill shadow px-3 py-2" %></td>
               <td class="text-center"><%= button_to "Delete",post_path(post),method: :delete, class:"btn-danger border-0 rounded-pill shadow px-3 py-2" %></td>

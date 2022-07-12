@@ -12,6 +12,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.create(post_params)
     if @post.valid?
+      current_user.add_role :creator, @post
       flash[:errors] = "Post Created Successfully"
       redirect_to posts_path
     else
@@ -30,6 +31,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    current_user.add_role :editor, @post
     if @post.update(post_params)
       flash[:errors] = "Post Updated Successfully"
       redirect_to post_path(@post)
