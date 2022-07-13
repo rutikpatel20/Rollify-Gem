@@ -3,5 +3,8 @@
   <%= user.email %>
   <%= user.roles.pluck(:name) %>
   <%= link_to "Edit Roles", edit_user_path(user) %>
+  <%= user.posts.pluck(:id) %>
+  <%= user.creator_posts.pluck(:id) %>
+  <%= user.editor_posts.pluck(:id) %>
   <br>
 <% end %>
