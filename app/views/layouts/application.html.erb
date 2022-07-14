@@ -20,6 +20,11 @@
       <br>
       Your Role : <%= current_user.roles.pluck(:name) %>
       <br>
+      <hr>
+      <%= link_to "Posts", posts_path %>
+      <br>
+      <%= link_to "Users", users_path %>
+      <hr>
       <%= link_to current_user.email, edit_user_registration_path %>
       <%= button_to "Log out", destroy_user_session_path, method: :delete, data: { turbo: "false" } %>
     <% else %>
