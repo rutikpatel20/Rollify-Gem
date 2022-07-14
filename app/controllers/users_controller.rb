@@ -11,10 +11,12 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    authorize @user
   end
 
   def update
     @user = User.find(params[:id])
+    authorize @user
     if @user.update(user_params)
       flash[:errors] = "User Updated Successfully"
       redirect_to users_path
