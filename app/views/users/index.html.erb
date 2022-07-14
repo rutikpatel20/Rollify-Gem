@@ -2,7 +2,11 @@
 <% @users.each do |user| %>
   <%= user.email %>
   <%= user.roles.pluck(:name) %>
-  <%= link_to "Edit Roles", edit_user_path(user) %>
+  <b>Current User can Edit a user role?</b>
+  <%= policy(User).edit? %>
+  <b>Current User can See users index?</b>
+  <%= policy(User).index? %>
+  <%= link_to "Edit Roles", edit_user_path(user) if policy(User).edit? %>
   <%= user.posts.pluck(:id) %>
   <%= user.creator_posts.pluck(:id) %>
   <%= user.editor_posts.pluck(:id) %>
