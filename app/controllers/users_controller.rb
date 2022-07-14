@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    if current_user.has_any_role? :admin, :newuser
+      @users = User.all
+    else
+      redirect_to root_path, alert: "----Not authorized to access users page----"
+    end
   end
 
   def edit
