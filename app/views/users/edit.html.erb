@@ -1,5 +1,6 @@
+<%= @user.email %>
 <%= form_with(model: @user) do |form| %>
-  <%= form.collection_check_boxes :role_ids, Role.all, :id, :name %>
+  <%= form.collection_check_boxes :role_ids, Role.where(resource_type: nil), :id, :name %>
   <%= @user.errors[:roles] %>
   <br>
   <%= form.submit class:"btn-primary border-0 rounded-pill shadow p-3" %>
